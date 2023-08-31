@@ -2,7 +2,10 @@ package com.miyuki.learn.design.test;
 
 import com.alibaba.fastjson.JSON;
 import com.miyuki.learn.design.MQAdapter;
+import com.miyuki.learn.design.OrderAdapterService;
 import com.miyuki.learn.design.RebateInfo;
+import com.miyuki.learn.design.cuisine.impl.InsideOrderService;
+import com.miyuki.learn.design.cuisine.impl.PopOrderAdapterServiceImpl;
 import com.miyuki.learn.design.mq.OrderMq;
 import com.miyuki.learn.design.mq.create_account;
 import org.junit.Test;
@@ -59,5 +62,14 @@ public class ApiTest {
         RebateInfo rebateInfo02 = MQAdapter.filter(orderMq.toString(), link02);
         System.out.println("mq.orderMq(适配前)" + orderMq.toString());
         System.out.println("mq.orderMq(适配后)" + JSON.toJSONString(rebateInfo02));
+    }
+
+    @Test
+    public void test_itfAdapter() {
+        OrderAdapterService popOrderAdapterService = new PopOrderAdapterServiceImpl();
+        System.out.println("判断首单，接口适配(pop)" + popOrderAdapterService.isFirst("100001"));
+
+        OrderAdapterService insideOrderService = new InsideOrderService();
+        System.out.println("判断首单，接口适配(自营): " +insideOrderService.isFirst("100001"));
     }
 }
