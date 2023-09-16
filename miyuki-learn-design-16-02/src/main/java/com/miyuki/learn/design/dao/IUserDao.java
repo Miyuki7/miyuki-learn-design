@@ -1,6 +1,7 @@
 package com.miyuki.learn.design.dao;
 
-import org.itstack.demo.design.po.User;
+
+import com.miyuki.learn.design.po.User;
 
 public interface IUserDao {
 

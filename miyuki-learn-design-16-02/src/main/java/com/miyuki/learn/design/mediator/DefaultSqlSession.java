@@ -84,7 +84,12 @@ public class DefaultSqlSession implements SqlSession{
 
     @Override
     public void close() {
-
+        if (null == connection) return;
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private <T> List<T> resultSet2Obj(ResultSet resultSet, Class<?> clazz) {
