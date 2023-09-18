@@ -29,14 +29,19 @@ public class SqlSessionFactoryBuilder {
         SAXReader saxReader = new SAXReader();
         try {
             saxReader.setEntityResolver(new XMLMapperEntityResolver());
-            Document document = saxReader.read(new InputSource(reader));
-            Configuration configuration =
+//            Document document = saxReader.read(new InputSource(reader));
+//            Configuration configuration =
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     private Configuration parseConfiguration(Element root) {
         Configuration configuration = new Configuration();
-        configuration.setDataSource();
+//        configuration.setDataSource();
+        return null;
     }
 
     private Map<String, String> dataSource(List<Element> list) {
